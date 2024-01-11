@@ -1,0 +1,17 @@
+language: WizardNames
+syllables: 
+  vals: [CV, V, CVN, VN, CVQ, VQ]
+  q: 0.72
+elements:
+  C: # consonants
+    vals: [k, t, r, n, s, h, m, d, g, z, c, b, p]
+    q: 0.7
+  V: # pure vowels
+    vals: [a, u, o, i, e]
+    q: 0.7
+  N: # nasal finals, more than in Japanese
+    vals: [n, m, ng]
+    q: 0.3
+  Q: # consonant finals that sound like K, use rest of alphabet, P for Wizard named Ziploc
+    vals: [c, q, k, p] 
+    q: 0.1
