@@ -1,7 +1,13 @@
 __copyright__ = """
 武満世阿弥
 TAKEMITSU, Zeami
-("Brien")
+("Willard-Southward, Brien")
+"""
+
+__use__ = """
+Ultimately this is part of a game design that is a multi-agent system.
+Game events are encoded using a fully-specified language that also serves as the spell-casting language.
+Loss functions and optimization methods are intended to speed up the agents' decision-making at population scale.
 """
 
 __outsidecredit__ = """
@@ -81,13 +87,11 @@ def simple_example()->None:
     
 
 # Additional evolutionary algorithm example, the Ackley function optimizer
-@lru_cache
 def ackley_result(x: float, y: float)->float:
     return -20.0 * np.exp(-0.2 * np.sqrt(0.5 * (x**2. + y**2.))) - np.exp(0.5 * (np.cos(2. * np.pi * x) + np.cos(2. * np.pi * y))) + np.e + 20.
 
 
 # try things
-@lru_cache
 def ackley_new(x: float, y: float, z: float)->float:
     """Adds a Z term with tangent function in place of scalar."""
     return np.tan(-2. * np.pi * z) * np.exp(-0.2 * np.sqrt(0.5 * (x**2. + y**2.))) - np.exp(0.5 * (np.cos(2. * np.pi * x) + np.cos(2. * np.pi * y))) + np.e + np.tan(2. * np.pi * z)
@@ -126,14 +130,14 @@ def buy_or_sell(n: float, bounds: list[float])->str:
     
 
 # Competition function Es Comma
-@lru_cache #memoizer
+#@lru_cache #memoizer
 def es_comma(objective: Callable[[float,float], float], 
              bounds: list[float], 
              n_iter: int, 
              step_size: float, 
              mu: int, 
              lam: int) -> list[list[float]]:
-    """Es Comma algorithm is a graph search."""
+    """Es Comma algorithm is a graph search reducer for optimizing possible zeroes."""
     best, best_eval = None, 1e+10
     # calcualte children per parent
     n_children = int(lam/mu)
@@ -181,4 +185,4 @@ def plot_function(r_min, r_max)->None:
     pyplot.show()
     return None
 
-plot_function(1, 10)
+plot_function(-10, 10)

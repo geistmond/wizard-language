@@ -1,6 +1,10 @@
 __syntax_readme__ = """
 Wizard Language is a world description language for a video game. It describes events using the information built into Japanese grammar.
 
+World events in a video game are already fully-specified in their semantics. This gives them other syntactic expressions.
+
+The motivation is that a magic spell is a speech act by a wizard both describes the world and causes effects in it. 
+
 There is an additional layer of representation for verbal renderings of in-game events that includes a wizard conlang. The conlang
 just uses approximately the same grammar as Japanese, with a different lexicon that describes unique in-game events. The wizard agents
 induce speech events when they cast spells, which are interpreted by the game world but audible to other wizards.

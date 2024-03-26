@@ -78,7 +78,8 @@ class Ball():
             pygame.draw.circle(display, (255,255,255), self.body.position, self.r)
             
     def infect(self, space=0, arbiter=0, data=0):
-        self.infected = True
+        if random.randint(0,100) > 50: # set to 50% chance, add more nuance later
+            self.infected = True
         self.shape.collision_type = population + 1
         
     def recover(self, space=0, arbiter=0, data=0):

@@ -1,3 +1,5 @@
+# Use radom weighted choice to consume Yaml-specified language designs to generate words.
+
 # Distributions to use for weights
 from scipy.stats import poisson, zipf
 

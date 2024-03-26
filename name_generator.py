@@ -1,3 +1,5 @@
+# Use radom weighted choice to consume Yaml-specified language designs to generate words.
+
 from scipy.stats import poisson, zipf
 
 from numpy.random import choice
@@ -6,7 +8,7 @@ import itertools as itr
 
 import yaml
 
-from functools import lru_cache
+from functools import lru_cache # memoizer to save memory
 
 
 @lru_cache
