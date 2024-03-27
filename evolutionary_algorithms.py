@@ -1,6 +1,6 @@
 __copyright__ = """
 武満世阿弥
-TAKEMITSU, Zeami
+TAKEMITSU, Zeami [birth name]
 ("Willard-Southward, Brien")
 """
 

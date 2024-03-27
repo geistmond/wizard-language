@@ -1,3 +1,9 @@
+__copyright__ = """
+武満世阿弥
+TAKEMITSU, Zeami [birth name]
+("Willard-Southward, Brien")
+"""
+
 __syntax_readme__ = """
 Wizard Language is a world description language for a video game. It describes events using the information built into Japanese grammar.
 

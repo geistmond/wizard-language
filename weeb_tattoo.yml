@@ -1,0 +1,19 @@
+# Uses the frequency ordering from the Japanese language to demonstrate how this is for a word generator for constructed languages too.
+# Data from "Frequency of occurrence for units of phonemes,morae, and syllables appearing in a lexical corpus of a Japanese newspaper", 2004, Katsuo Tamaoka and Shogo Makioka
+language: WeebTattoo
+syllables: 
+  vals: [CV, CVN, V, CVCV, CVV, CVQV]
+  q: 0.72
+elements:
+  C: # consonants
+    vals: [k, t, r, n, s, h, m, d, g, z, b, p]
+    q: 0.7
+  V: # pure vowels
+    vals: [a, u, o, i, e]
+    q: 0.7
+  N: # only one, but orthography sometimes changes it
+    vals: [n]
+    q: 1.0
+  Q: # for the geminate unvoiced consonants, unused here because they have to match
+    vals: [kk, tt, ss, pp] 
+    q: 0.1

@@ -1,4 +1,11 @@
-# Ultimately this goes into the Wizard Language project to model interactions.
+__copyright__ = """
+武満世阿弥
+TAKEMITSU, Zeami [birth name]
+("Willard-Southward, Brien")
+"""
+
+__outside_sources__ = """
+"""
 
 import pygame
 from pygame.locals import *

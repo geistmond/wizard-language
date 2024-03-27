@@ -29,6 +29,8 @@ from abc import ABC, abstractmethod
 
 from dataclasses import dataclass
 
+import random
+
 @dataclass
 class Noun:
     """
@@ -376,19 +378,27 @@ class Spell(Verb):
 # Let's try to define a Wizard named Ziploc 
 wizards = []
 def make_wizard():
-    w = Wizard(
-        name="Ziploc",
-        power="1.0",
-        rank='1',
-        spells=['zip', 'lok'])
-    w.age = 1000.0
-    w.mortal = False
-    w.alive = True
-    w.health = 1.0 # out of [0., 1.] unit vector, Ziploc is a top doggy
-    w.strength = 1.0 # out of [0., 1.] unit vector, Ziploc is a top doggy
-    w.agility = 1.0 # out of [0., 1.] unit vector, Ziploc is a top doggy
-    w.intelligence = 1.0 # out of [0., 1.] unit vector, Ziploc is a top doggy
-    w.rank = 1 # only set rank to 0 if it's a disposable enemy? then greater rank number = lower status
+    w = Wizard(name = "Ziploc",
+               id = random.randint(0,1000),
+               certainty = 1.0,
+               rudeness = 1.0,
+               mana = 1.0,
+               real = True,
+               pronunciation = {},
+               face = [],
+               age = 1000.0,
+               mortal = False,
+               alive = True,
+               conscious = True,
+               health = 1.0,
+               vitality = 1.0,
+               strength = 1.0,
+               agility = 1.0,
+               intelligence = 1.0,
+               category = "leader",
+               power = 1.0,
+               rank = 1,
+               spells = ['zip', 'lock'])
     return w
 wizards.append(make_wizard())
 [print('Name: ', w.name, 'Spells: ', w.spells, 'Mortal?', w.mortal) for w in wizards]
