@@ -1,4 +1,10 @@
-Sketches for a multi-agent battle simulator with magic system.
+Sketches for a multi-agent battle simulator with magic system. 
+
+* action_classes.py and wizard_language.py make a start at some natural language modeling for a domain-specified language that can communicate game events and undergo further comprehension into natural language.
+* name_generator.py is code that consumes a .yml file describing a set of atoms and a mathematical distribution that together approximate a Markov model.
+* resource_sim.py is a test of the resource consumption simulation library SimPy (not to be confused with the symbolic computattion library SymPy)
+* disease_sim.py is reimplementing one of the major disease simulation starting points from early in the COVID-19 pandemic. This is to model game knowledge.
+* wizard_genome.py is an evolutionary optimization demo because the wizards change over time and optimize.
 
 Goals for the simulation:
 
