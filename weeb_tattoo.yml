@@ -1,3 +1,4 @@
+# You see non-Japanese people with random katakana and hiragana tattoos that approximate Japanese words but are not real words. This simulates that using a generative Markov model.
 # Uses the frequency ordering from the Japanese language to demonstrate how this is for a word generator for constructed languages too.
 # Data from "Frequency of occurrence for units of phonemes,morae, and syllables appearing in a lexical corpus of a Japanese newspaper", 2004, Katsuo Tamaoka and Shogo Makioka
 language: WeebTattoo
