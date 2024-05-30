@@ -1,3 +1,5 @@
+import secrets
+
 __copyright__ = """
 武満世阿弥
 TAKEMITSU, Zeami [birth name]
@@ -8,8 +10,6 @@ __outside_sources__ = """
 https://github.com/kiecodes/genetic-algorithms/
 https://www.youtube.com/watch?v=nhT56blfRpE
 """
-
-import random
 import numpy as np
 from typing import List, Optional, Callable, Tuple
 
@@ -39,7 +39,7 @@ def generate_genome(length: int) -> Genome:
     The genome is represented as an array of integers in the original implementation.
     This could be replaced by an array of floats in the unit vector.
     """
-    return random.choices([0,1], k=length) 
+    return secrets.SystemRandom().choices([0,1], k=length) 
 
 
 def generate_population(size: int, genome_length: int) -> Population:
@@ -57,7 +57,7 @@ def single_point_crossover(a: Genome, b: Genome) -> Tuple[Genome, Genome]:
     if length < 2:
         return a, b
     
-    p = random.randint(1, length - 1)
+    p = secrets.SystemRandom().randint(1, length - 1)
     return a[0:p] + b[p:], b[0:p] + a[p:]
 
 
@@ -66,8 +66,8 @@ def mutation(genome: Genome, num: int = 1, probability: float = 0.5) -> Genome:
     Args: Genome to mutate, number of attempted mutation sites, probability of mutation
     """
     for _ in range(num):
-        index = random.randrange(len(genome))
-        genome[index] = genome[index] if random.random() > probability else abs(genome[index] - 1) # abs(genome[index] - 1) is just a bit flip here...
+        index = secrets.SystemRandom().randrange(len(genome))
+        genome[index] = genome[index] if secrets.SystemRandom().random() > probability else abs(genome[index] - 1) # abs(genome[index] - 1) is just a bit flip here...
     return genome
 
 
@@ -79,7 +79,7 @@ def population_fitness(population: Population, fitness_func: FitnessFunc) -> int
 def selection_pair(population: Population, fitness_func: FitnessFunc) -> Population:
     """Random weighted choice of 2 elements of Population based on weights assessed by fitness function.
     The way the main fitness function is defined sets the weight to 0 for a sum below a threshold (see below)."""
-    return random.choices(population=population, 
+    return secrets.SystemRandom().choices(population=population, 
                           weights=[fitness_func(genes) for genes in population],
                           k=2)
 
@@ -134,7 +134,7 @@ def generate_genome_f(length: int) -> GenomeF:
     The genome is represented as an array of integers in the original implementation.
     Here it's floats that average out instead of doing a single-point crossover.
     """
-    return [random.random() for _ in range(length)] # floats in [0., 1.]
+    return [secrets.SystemRandom().random() for _ in range(length)] # floats in [0., 1.]
 
 
 def generate_population_f(size: int, genome_length: int) -> PopulationF:
@@ -158,7 +158,7 @@ def crossover_and_avg_f(a: GenomeF, b: GenomeF) -> Tuple[GenomeF, GenomeF]:
     a = avg
     b = avg_r
     
-    p = random.randint(1, length - 1) # random crossover point 
+    p = secrets.SystemRandom().randint(1, length - 1) # random crossover point 
     aa, bb = a[0:p] + b[p:], b[0:p] + a[p:]
     return aa, bb
 
@@ -168,8 +168,8 @@ def mutation_f(genome: GenomeF, num: int = 1, probability: float = 0.5) -> Genom
     Args: Genome to mutate, number of attempted mutation sites, probability of mutation
     """
     for _ in range(num):
-        index = random.randrange(len(genome))
-        genome[index] = genome[index] if random.random() > probability else abs(genome[index] - 1) # ... but abs(genome[index] - 1) is 1's complement here
+        index = secrets.SystemRandom().randrange(len(genome))
+        genome[index] = genome[index] if secrets.SystemRandom().random() > probability else abs(genome[index] - 1) # ... but abs(genome[index] - 1) is 1's complement here
     return genome
 
 
@@ -181,7 +181,7 @@ def population_fitness_f(population: PopulationF, fitness_func_f: FitnessFuncF) 
 def selection_pair_f(population: PopulationF, fitness_func_f: FitnessFuncF) -> PopulationF:
     """Random weighted choice of 2 elements of Population based on weights assessed by fitness function.
     The way the main fitness function is defined sets the weight to 0 for a sum below a threshold (see below)."""
-    return random.choices(population=population, 
+    return secrets.SystemRandom().choices(population=population, 
                           weights=[fitness_func_f(genes) for genes in population],
                           k=2)
 

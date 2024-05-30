@@ -1,3 +1,5 @@
+import secrets
+
 __copyright__ = """
 武満世阿弥
 TAKEMITSU, Zeami [birth name]
@@ -17,8 +19,6 @@ https://www.youtube.com/watch?v=4XZoVQOt-0I
 This generates random possible solutions to a polynomial, checks them, randomizes, checks again.
 It approximates the result already in the polynomial, i.e. if you apply Cartesian multiplication a zero is always at n.
 """
-
-import random
 import numpy as np
 
 from matplotlib import pyplot
@@ -46,9 +46,9 @@ def simple_example()->None:
     # Space of random candidate solutions
     solutions = []
     for s in range(1000):
-        solutions.append((random.uniform(0,10000), 
-                        random.uniform(0,10000), 
-                        random.uniform(0,10000)))
+        solutions.append((secrets.SystemRandom().uniform(0,10000), 
+                        secrets.SystemRandom().uniform(0,10000), 
+                        secrets.SystemRandom().uniform(0,10000)))
 
     # Selection Phase
     for i in range(10000):
@@ -75,9 +75,9 @@ def simple_example()->None:
         # Mutation Phase
         new_gen = []
         for _ in range(1000):
-            e1 = random.choice(elements) * random.uniform(0.99, 1.01)
-            e2 = random.choice(elements) * random.uniform(0.99, 1.01)
-            e3 = random.choice(elements) * random.uniform(0.99, 1.01)
+            e1 = secrets.choice(elements) * secrets.SystemRandom().uniform(0.99, 1.01)
+            e2 = secrets.choice(elements) * secrets.SystemRandom().uniform(0.99, 1.01)
+            e3 = secrets.choice(elements) * secrets.SystemRandom().uniform(0.99, 1.01)
             new_gen.append((e1,e2,e3))
 
         solutions = new_gen

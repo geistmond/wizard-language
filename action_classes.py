@@ -28,8 +28,7 @@ Goals for the agent model and Wizard Language:
 from abc import ABC, abstractmethod
 
 from dataclasses import dataclass
-
-import random
+import secrets
 
 @dataclass
 class Noun:
@@ -379,7 +378,7 @@ class Spell(Verb):
 wizards = []
 def make_wizard():
     w = Wizard(name = "Ziploc",
-               id = random.randint(0,1000),
+               id = secrets.SystemRandom().randint(0,1000),
                certainty = 1.0,
                rudeness = 1.0,
                mana = 1.0,

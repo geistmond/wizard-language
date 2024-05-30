@@ -1,3 +1,5 @@
+import secrets
+
 __copyright__ = """
 武満世阿弥
 TAKEMITSU, Zeami [birth name]
@@ -11,8 +13,6 @@ import pygame
 from pygame.locals import *
 import pymunk
 import pylab
-
-import random
 import io
 import base64
 
@@ -63,9 +63,9 @@ class Ball():
         self.infected = False
         self.recovered = False
         if self.infected == False:
-            self.body.velocity = random.uniform(-100, 100), random.uniform(-100,100)
+            self.body.velocity = secrets.SystemRandom().uniform(-100, 100), secrets.SystemRandom().uniform(-100,100)
         elif self.infected == True:
-            self.body.velocity = random.uniform(-25, 25), random.uniform(-25, 25) # quarter speed while infected
+            self.body.velocity = secrets.SystemRandom().uniform(-25, 25), secrets.SystemRandom().uniform(-25, 25) # quarter speed while infected
         space.add(self.body, self.shape)
         
     def pass_time(self):
@@ -85,7 +85,7 @@ class Ball():
             pygame.draw.circle(display, (255,255,255), self.body.position, self.r)
             
     def infect(self, space=0, arbiter=0, data=0):
-        if random.randint(0,100) > 50: # set to 50% chance, add more nuance later
+        if secrets.SystemRandom().randint(0,100) > 50: # set to 50% chance, add more nuance later
             self.infected = True
         self.shape.collision_type = population + 1
         
@@ -103,14 +103,14 @@ class Wall():
 
 infected_count = []
 def game():
-    balls = [Ball(random.randint(0,800), random.randint(0,800), 10) for i in range(300)]
+    balls = [Ball(secrets.SystemRandom().randint(0,800), secrets.SystemRandom().randint(0,800), 10) for i in range(300)]
     
     for i in range(1, population+1):
         balls[i-1].shape.collision_type = i
         handler = space.add_collision_handler(i, population+1)
         handler.separate = balls[i-1].infect
         
-    random.choice(balls).infect() # choose random agent to infect
+    secrets.choice(balls).infect() # choose random agent to infect
     
     walls = [Wall((0, 0), (0, 800)), 
              Wall((0, 0), (800, 0)),
