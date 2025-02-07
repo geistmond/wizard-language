@@ -124,9 +124,9 @@ def run(words='1', syllables='1', distribution='zipf', file='wizard_names.yml', 
     output = ''
     # Create the phonology, grabbing from file if specified
     if len(file) > 0:
-        phonology = yaml.load(open(file, 'r'), Loader=yaml.FullLoader)
+        phonology = yaml.load(open(file, 'r'), Loader=yaml.SafeLoader)
     else:
-        phonology = yaml.load(open('wizard_names.yml', 'r'), Loader=yaml.FullLoader)
+        phonology = yaml.load(open('wizard_names.yml', 'r'), Loader=yaml.SafeLoader)
 
     # Start by adding weights to the phonology we've received
     print(phonology)
