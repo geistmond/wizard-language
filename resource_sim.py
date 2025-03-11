@@ -3,8 +3,8 @@
 # This will become some other resource that involves a wait, like a powerup
 
 import simpy # SimPy is used for discrete event simulation with consumables wheras SymPy is for symbolic computation
-import random
 import statistics
+import secrets
 
 wait_times = []
 
@@ -20,13 +20,13 @@ class Theater(object):
         self.ushers = simpy.Resource(env, num_ushers)
         
     def purchase_ticket(self, moviegoer):
-        yield self.env.timeout(random.randint(1,3))
+        yield self.env.timeout(secrets.SystemRandom().randint(1,3))
         
     def check_ticket(self, moviegoer):
         yield self.env.timeout(3/60)
         
     def sell_food(self, moviegoer):
-        yield self.env.timeout(random.randint(1,5))
+        yield self.env.timeout(secrets.SystemRandom().randint(1,5))
         
 
 def go_to_movies(env, moviegoer, theater):
@@ -40,7 +40,7 @@ def go_to_movies(env, moviegoer, theater):
         yield request
         yield env.process(theater.check_ticket(moviegoer))
         
-    if random.choice([True,False]):
+    if secrets.choice([True,False]):
         with theater.servers.request() as request:
             yield request
             yield env.process(theater.sell_food(moviegoer))
@@ -80,7 +80,7 @@ def get_user_input():
     return params
 
 def main():
-    random.seed(123)
+    secrets.SystemRandom().seed(123)
     #num_cashiers, num_servers, num_ushers = get_user_input()
     num_cashiers, num_servers, num_ushers = 10, 10, 10
     
